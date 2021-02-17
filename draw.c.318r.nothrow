@@ -1,0 +1,1024 @@
+
+;; Function draw_wireframe_triangle (draw_wireframe_triangle, funcdef_no=6, decl_uid=8745, cgraph_uid=7, symbol_order=6)
+
+
+
+draw_wireframe_triangle
+
+Dataflow summary:
+;;  fully invalidated by EH 	 0 [ax] 1 [dx] 2 [cx] 4 [si] 5 [di] 8 [st] 9 [st(1)] 10 [st(2)] 11 [st(3)] 12 [st(4)] 13 [st(5)] 14 [st(6)] 15 [st(7)] 17 [flags] 18 [fpsr] 20 [xmm0] 21 [xmm1] 22 [xmm2] 23 [xmm3] 24 [xmm4] 25 [xmm5] 26 [xmm6] 27 [xmm7] 28 [mm0] 29 [mm1] 30 [mm2] 31 [mm3] 32 [mm4] 33 [mm5] 34 [mm6] 35 [mm7] 36 [r8] 37 [r9] 38 [r10] 39 [r11] 44 [xmm8] 45 [xmm9] 46 [xmm10] 47 [xmm11] 48 [xmm12] 49 [xmm13] 50 [xmm14] 51 [xmm15] 52 [xmm16] 53 [xmm17] 54 [xmm18] 55 [xmm19] 56 [xmm20] 57 [xmm21] 58 [xmm22] 59 [xmm23] 60 [xmm24] 61 [xmm25] 62 [xmm26] 63 [xmm27] 64 [xmm28] 65 [xmm29] 66 [xmm30] 67 [xmm31] 68 [k0] 69 [k1] 70 [k2] 71 [k3] 72 [k4] 73 [k5] 74 [k6] 75 [k7]
+;;  hardware regs used 	 7 [sp]
+;;  regular block artificial uses 	 6 [bp] 7 [sp]
+;;  eh block artificial uses 	 6 [bp] 7 [sp] 16 [argp] 19 [frame]
+;;  entry block defs 	 0 [ax] 1 [dx] 2 [cx] 4 [si] 5 [di] 6 [bp] 7 [sp] 19 [frame] 20 [xmm0] 21 [xmm1] 22 [xmm2] 23 [xmm3] 24 [xmm4] 25 [xmm5] 26 [xmm6] 27 [xmm7] 36 [r8] 37 [r9]
+;;  exit block uses 	 6 [bp] 7 [sp] 19 [frame]
+;;  regs ever live 	 0 [ax] 1 [dx] 2 [cx] 4 [si] 5 [di] 6 [bp] 7 [sp] 17 [flags] 36 [r8] 37 [r9]
+;;  ref usage 	r0={10d,6u} r1={7d,4u} r2={7d,4u} r4={7d,4u} r5={10d,7u} r6={3d,32u} r7={13d,28u} r8={3d} r9={3d} r10={3d} r11={3d} r12={3d} r13={3d} r14={3d} r15={3d} r17={10d} r18={3d} r19={1d,1u} r20={4d} r21={4d} r22={4d} r23={4d} r24={4d} r25={4d} r26={4d} r27={4d} r28={3d} r29={3d} r30={3d} r31={3d} r32={3d} r33={3d} r34={3d} r35={3d} r36={8d,5u} r37={7d,4u} r38={3d} r39={3d} r44={3d} r45={3d} r46={3d} r47={3d} r48={3d} r49={3d} r50={3d} r51={3d} r52={3d} r53={3d} r54={3d} r55={3d} r56={3d} r57={3d} r58={3d} r59={3d} r60={3d} r61={3d} r62={3d} r63={3d} r64={3d} r65={3d} r66={3d} r67={3d} r68={3d} r69={3d} r70={3d} r71={3d} r72={3d} r73={3d} r74={3d} r75={3d} 
+;;    total ref usage 363{268d,95u,0e} in 52{49 regular + 3 call} insns.
+(note 1 0 9 NOTE_INSN_DELETED)
+(note 9 1 69 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+(insn/f 69 9 70 2 (set (mem:DI (pre_dec:DI (reg/f:DI 7 sp)) [0  S8 A8])
+        (reg/f:DI 6 bp)) "draw.c":5:149 42 {*pushdi2_rex64}
+     (nil))
+(insn/f 70 69 71 2 (set (reg/f:DI 6 bp)
+        (reg/f:DI 7 sp)) "draw.c":5:149 66 {*movdi_internal}
+     (nil))
+(insn/f 71 70 72 2 (parallel [
+            (set (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int -32 [0xffffffffffffffe0])))
+            (clobber (reg:CC 17 flags))
+            (clobber (mem:BLK (scratch) [0  A8]))
+        ]) "draw.c":5:149 1059 {pro_epilogue_adjust_stack_add_di}
+     (nil))
+(note 72 71 2 2 NOTE_INSN_PROLOGUE_END)
+(insn 2 72 3 2 (set (mem/f/c:DI (plus:DI (reg/f:DI 6 bp)
+                (const_int -8 [0xfffffffffffffff8])) [1 c+0 S8 A64])
+        (reg:DI 5 di [ c ])) "draw.c":5:149 66 {*movdi_internal}
+     (nil))
+(insn 3 2 4 2 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -12 [0xfffffffffffffff4])) [2 drawable+0 S4 A32])
+        (reg:SI 4 si [ drawable ])) "draw.c":5:149 67 {*movsi_internal}
+     (nil))
+(insn 4 3 5 2 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -16 [0xfffffffffffffff0])) [2 gcontext+0 S4 A32])
+        (reg:SI 1 dx [ gcontext ])) "draw.c":5:149 67 {*movsi_internal}
+     (nil))
+(insn 5 4 6 2 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -20 [0xffffffffffffffec])) [2 x1+0 S4 A32])
+        (reg:SI 2 cx [ x1 ])) "draw.c":5:149 67 {*movsi_internal}
+     (nil))
+(insn 6 5 7 2 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -24 [0xffffffffffffffe8])) [2 y1+0 S4 A32])
+        (reg:SI 36 r8 [ y1 ])) "draw.c":5:149 67 {*movsi_internal}
+     (nil))
+(insn 7 6 8 2 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -28 [0xffffffffffffffe4])) [2 x2+0 S4 A32])
+        (reg:SI 37 r9 [ x2 ])) "draw.c":5:149 67 {*movsi_internal}
+     (nil))
+(note 8 7 11 2 NOTE_INSN_FUNCTION_BEG)
+(insn 11 8 12 2 (set (reg:SI 37 r9 [82])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -28 [0xffffffffffffffe4])) [2 x2+0 S4 A32])) "draw.c":6:5 67 {*movsi_internal}
+     (nil))
+(insn 12 11 13 2 (set (reg:SI 36 r8 [83])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -24 [0xffffffffffffffe8])) [2 y1+0 S4 A32])) "draw.c":6:5 67 {*movsi_internal}
+     (nil))
+(insn 13 12 14 2 (set (reg:SI 2 cx [84])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -20 [0xffffffffffffffec])) [2 x1+0 S4 A32])) "draw.c":6:5 67 {*movsi_internal}
+     (nil))
+(insn 14 13 15 2 (set (reg:SI 1 dx [85])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -16 [0xfffffffffffffff0])) [2 gcontext+0 S4 A32])) "draw.c":6:5 67 {*movsi_internal}
+     (nil))
+(insn 15 14 16 2 (set (reg:SI 4 si [86])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -12 [0xfffffffffffffff4])) [2 drawable+0 S4 A32])) "draw.c":6:5 67 {*movsi_internal}
+     (nil))
+(insn 16 15 17 2 (set (reg:DI 0 ax [87])
+        (mem/f/c:DI (plus:DI (reg/f:DI 6 bp)
+                (const_int -8 [0xfffffffffffffff8])) [1 c+0 S8 A64])) "draw.c":6:5 66 {*movdi_internal}
+     (nil))
+(insn 17 16 18 2 (parallel [
+            (set (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int -8 [0xfffffffffffffff8])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw.c":6:5 186 {*adddi_1}
+     (expr_list:REG_ARGS_SIZE (const_int 8 [0x8])
+        (nil)))
+(insn 18 17 19 2 (set (reg:SI 5 di [88])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int 16 [0x10])) [2 y2+0 S4 A64])) "draw.c":6:5 67 {*movsi_internal}
+     (nil))
+(insn 19 18 25 2 (set (mem:SI (pre_modify:DI (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int -8 [0xfffffffffffffff8]))) [2  S4 A32])
+        (reg:SI 5 di [88])) "draw.c":6:5 46 {*pushsi2_rex64}
+     (expr_list:REG_ARGS_SIZE (const_int 16 [0x10])
+        (nil)))
+(insn 25 19 26 2 (set (reg:DI 5 di)
+        (reg:DI 0 ax [87])) "draw.c":6:5 66 {*movdi_internal}
+     (nil))
+(insn 26 25 27 2 (set (reg:QI 0 ax)
+        (const_int 0 [0])) "draw.c":6:5 69 {*movqi_internal}
+     (nil))
+(call_insn 27 26 28 2 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("draw_line") [flags 0x3]  <function_decl 0x7fa66ea82400 draw_line>) [0 draw_line S1 A8])
+            (const_int 16 [0x10]))) "draw.c":6:5 754 {*call_value}
+     (nil)
+    (expr_list (use (reg:QI 0 ax))
+        (expr_list:DI (use (reg:DI 5 di))
+            (expr_list:SI (use (reg:SI 4 si))
+                (expr_list:SI (use (reg:SI 1 dx))
+                    (expr_list:SI (use (reg:SI 2 cx))
+                        (expr_list:SI (use (reg:SI 36 r8))
+                            (expr_list:SI (use (reg:SI 37 r9))
+                                (nil)))))))))
+(insn 28 27 29 2 (parallel [
+            (set (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int 16 [0x10])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw.c":6:5 186 {*adddi_1}
+     (expr_list:REG_ARGS_SIZE (const_int 0 [0])
+        (nil)))
+(insn 29 28 30 2 (set (reg:SI 36 r8 [89])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int 24 [0x18])) [2 x3+0 S4 A64])) "draw.c":7:5 67 {*movsi_internal}
+     (nil))
+(insn 30 29 31 2 (set (reg:SI 2 cx [90])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -28 [0xffffffffffffffe4])) [2 x2+0 S4 A32])) "draw.c":7:5 67 {*movsi_internal}
+     (nil))
+(insn 31 30 32 2 (set (reg:SI 1 dx [91])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -16 [0xfffffffffffffff0])) [2 gcontext+0 S4 A32])) "draw.c":7:5 67 {*movsi_internal}
+     (nil))
+(insn 32 31 33 2 (set (reg:SI 4 si [92])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -12 [0xfffffffffffffff4])) [2 drawable+0 S4 A32])) "draw.c":7:5 67 {*movsi_internal}
+     (nil))
+(insn 33 32 34 2 (set (reg:DI 0 ax [93])
+        (mem/f/c:DI (plus:DI (reg/f:DI 6 bp)
+                (const_int -8 [0xfffffffffffffff8])) [1 c+0 S8 A64])) "draw.c":7:5 66 {*movdi_internal}
+     (nil))
+(insn 34 33 35 2 (parallel [
+            (set (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int -8 [0xfffffffffffffff8])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw.c":7:5 186 {*adddi_1}
+     (expr_list:REG_ARGS_SIZE (const_int 8 [0x8])
+        (nil)))
+(insn 35 34 36 2 (set (reg:SI 5 di [94])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int 32 [0x20])) [2 y3+0 S4 A64])) "draw.c":7:5 67 {*movsi_internal}
+     (nil))
+(insn 36 35 37 2 (set (mem:SI (pre_modify:DI (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int -8 [0xfffffffffffffff8]))) [2  S4 A32])
+        (reg:SI 5 di [94])) "draw.c":7:5 46 {*pushsi2_rex64}
+     (expr_list:REG_ARGS_SIZE (const_int 16 [0x10])
+        (nil)))
+(insn 37 36 38 2 (set (reg:SI 37 r9)
+        (reg:SI 36 r8 [89])) "draw.c":7:5 67 {*movsi_internal}
+     (nil))
+(insn 38 37 42 2 (set (reg:SI 36 r8)
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int 16 [0x10])) [2 y2+0 S4 A64])) "draw.c":7:5 67 {*movsi_internal}
+     (nil))
+(insn 42 38 43 2 (set (reg:DI 5 di)
+        (reg:DI 0 ax [93])) "draw.c":7:5 66 {*movdi_internal}
+     (nil))
+(insn 43 42 44 2 (set (reg:QI 0 ax)
+        (const_int 0 [0])) "draw.c":7:5 69 {*movqi_internal}
+     (nil))
+(call_insn 44 43 45 2 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("draw_line") [flags 0x3]  <function_decl 0x7fa66ea82400 draw_line>) [0 draw_line S1 A8])
+            (const_int 16 [0x10]))) "draw.c":7:5 754 {*call_value}
+     (nil)
+    (expr_list (use (reg:QI 0 ax))
+        (expr_list:DI (use (reg:DI 5 di))
+            (expr_list:SI (use (reg:SI 4 si))
+                (expr_list:SI (use (reg:SI 1 dx))
+                    (expr_list:SI (use (reg:SI 2 cx))
+                        (expr_list:SI (use (reg:SI 36 r8))
+                            (expr_list:SI (use (reg:SI 37 r9))
+                                (nil)))))))))
+(insn 45 44 46 2 (parallel [
+            (set (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int 16 [0x10])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw.c":7:5 186 {*adddi_1}
+     (expr_list:REG_ARGS_SIZE (const_int 0 [0])
+        (nil)))
+(insn 46 45 47 2 (set (reg:SI 37 r9 [95])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -20 [0xffffffffffffffec])) [2 x1+0 S4 A32])) "draw.c":8:5 67 {*movsi_internal}
+     (nil))
+(insn 47 46 48 2 (set (reg:SI 36 r8 [96])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int 32 [0x20])) [2 y3+0 S4 A64])) "draw.c":8:5 67 {*movsi_internal}
+     (nil))
+(insn 48 47 49 2 (set (reg:SI 2 cx [97])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int 24 [0x18])) [2 x3+0 S4 A64])) "draw.c":8:5 67 {*movsi_internal}
+     (nil))
+(insn 49 48 50 2 (set (reg:SI 1 dx [98])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -16 [0xfffffffffffffff0])) [2 gcontext+0 S4 A32])) "draw.c":8:5 67 {*movsi_internal}
+     (nil))
+(insn 50 49 51 2 (set (reg:SI 4 si [99])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -12 [0xfffffffffffffff4])) [2 drawable+0 S4 A32])) "draw.c":8:5 67 {*movsi_internal}
+     (nil))
+(insn 51 50 52 2 (set (reg:DI 0 ax [100])
+        (mem/f/c:DI (plus:DI (reg/f:DI 6 bp)
+                (const_int -8 [0xfffffffffffffff8])) [1 c+0 S8 A64])) "draw.c":8:5 66 {*movdi_internal}
+     (nil))
+(insn 52 51 53 2 (parallel [
+            (set (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int -8 [0xfffffffffffffff8])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw.c":8:5 186 {*adddi_1}
+     (expr_list:REG_ARGS_SIZE (const_int 8 [0x8])
+        (nil)))
+(insn 53 52 54 2 (set (reg:SI 5 di [101])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -24 [0xffffffffffffffe8])) [2 y1+0 S4 A32])) "draw.c":8:5 67 {*movsi_internal}
+     (nil))
+(insn 54 53 60 2 (set (mem:SI (pre_modify:DI (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int -8 [0xfffffffffffffff8]))) [2  S4 A32])
+        (reg:SI 5 di [101])) "draw.c":8:5 46 {*pushsi2_rex64}
+     (expr_list:REG_ARGS_SIZE (const_int 16 [0x10])
+        (nil)))
+(insn 60 54 61 2 (set (reg:DI 5 di)
+        (reg:DI 0 ax [100])) "draw.c":8:5 66 {*movdi_internal}
+     (nil))
+(insn 61 60 62 2 (set (reg:QI 0 ax)
+        (const_int 0 [0])) "draw.c":8:5 69 {*movqi_internal}
+     (nil))
+(call_insn 62 61 63 2 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("draw_line") [flags 0x3]  <function_decl 0x7fa66ea82400 draw_line>) [0 draw_line S1 A8])
+            (const_int 16 [0x10]))) "draw.c":8:5 754 {*call_value}
+     (nil)
+    (expr_list (use (reg:QI 0 ax))
+        (expr_list:DI (use (reg:DI 5 di))
+            (expr_list:SI (use (reg:SI 4 si))
+                (expr_list:SI (use (reg:SI 1 dx))
+                    (expr_list:SI (use (reg:SI 2 cx))
+                        (expr_list:SI (use (reg:SI 36 r8))
+                            (expr_list:SI (use (reg:SI 37 r9))
+                                (nil)))))))))
+(insn 63 62 67 2 (parallel [
+            (set (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int 16 [0x10])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw.c":8:5 186 {*adddi_1}
+     (expr_list:REG_ARGS_SIZE (const_int 0 [0])
+        (nil)))
+(insn 67 63 73 2 (const_int 0 [0]) "draw.c":9:1 773 {nop}
+     (nil))
+(note 73 67 74 2 NOTE_INSN_EPILOGUE_BEG)
+(insn/f 74 73 75 2 (parallel [
+            (set (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 6 bp)
+                    (const_int 8 [0x8])))
+            (set (reg/f:DI 6 bp)
+                (mem:DI (reg/f:DI 6 bp) [0  S8 A8]))
+            (clobber (mem:BLK (scratch) [0  A8]))
+        ]) "draw.c":9:1 783 {*leave_rex64}
+     (expr_list:REG_CFA_DEF_CFA (plus:DI (reg/f:DI 7 sp)
+            (const_int 8 [0x8]))
+        (nil)))
+(jump_insn 75 74 76 2 (simple_return) "draw.c":9:1 767 {simple_return_internal}
+     (nil)
+ -> simple_return)
+(barrier 76 75 68)
+(note 68 76 0 NOTE_INSN_DELETED)
+
+;; Function draw_line (draw_line, funcdef_no=7, decl_uid=8747, cgraph_uid=8, symbol_order=7)
+
+
+
+draw_line
+
+Dataflow summary:
+;;  fully invalidated by EH 	 0 [ax] 1 [dx] 2 [cx] 4 [si] 5 [di] 8 [st] 9 [st(1)] 10 [st(2)] 11 [st(3)] 12 [st(4)] 13 [st(5)] 14 [st(6)] 15 [st(7)] 17 [flags] 18 [fpsr] 20 [xmm0] 21 [xmm1] 22 [xmm2] 23 [xmm3] 24 [xmm4] 25 [xmm5] 26 [xmm6] 27 [xmm7] 28 [mm0] 29 [mm1] 30 [mm2] 31 [mm3] 32 [mm4] 33 [mm5] 34 [mm6] 35 [mm7] 36 [r8] 37 [r9] 38 [r10] 39 [r11] 44 [xmm8] 45 [xmm9] 46 [xmm10] 47 [xmm11] 48 [xmm12] 49 [xmm13] 50 [xmm14] 51 [xmm15] 52 [xmm16] 53 [xmm17] 54 [xmm18] 55 [xmm19] 56 [xmm20] 57 [xmm21] 58 [xmm22] 59 [xmm23] 60 [xmm24] 61 [xmm25] 62 [xmm26] 63 [xmm27] 64 [xmm28] 65 [xmm29] 66 [xmm30] 67 [xmm31] 68 [k0] 69 [k1] 70 [k2] 71 [k3] 72 [k4] 73 [k5] 74 [k6] 75 [k7]
+;;  hardware regs used 	 7 [sp]
+;;  regular block artificial uses 	 6 [bp] 7 [sp]
+;;  eh block artificial uses 	 6 [bp] 7 [sp] 16 [argp] 19 [frame]
+;;  entry block defs 	 0 [ax] 1 [dx] 2 [cx] 4 [si] 5 [di] 6 [bp] 7 [sp] 19 [frame] 20 [xmm0] 21 [xmm1] 22 [xmm2] 23 [xmm3] 24 [xmm4] 25 [xmm5] 26 [xmm6] 27 [xmm7] 36 [r8] 37 [r9]
+;;  exit block uses 	 6 [bp] 7 [sp] 19 [frame]
+;;  regs ever live 	 0 [ax] 1 [dx] 2 [cx] 4 [si] 5 [di] 6 [bp] 7 [sp] 17 [flags] 20 [xmm0] 21 [xmm1] 36 [r8] 37 [r9]
+;;  ref usage 	r0={44d,42u} r1={8d,5u} r2={10d,9u} r4={8d,5u} r5={7d,4u} r6={3d,116u} r7={4d,22u} r8={3d} r9={3d} r10={3d} r11={3d} r12={3d} r13={3d} r14={3d} r15={3d} r16={3e} r17={23d,5u} r18={3d} r19={1d,1u,9e} r20={20d,16u} r21={8d,4u} r22={4d} r23={4d} r24={4d} r25={4d} r26={4d} r27={4d} r28={3d} r29={3d} r30={3d} r31={3d} r32={3d} r33={3d} r34={3d} r35={3d} r36={6d,3u} r37={6d,3u} r38={3d} r39={3d} r44={3d} r45={3d} r46={3d} r47={3d} r48={3d} r49={3d} r50={3d} r51={3d} r52={3d} r53={3d} r54={3d} r55={3d} r56={3d} r57={3d} r58={3d} r59={3d} r60={3d} r61={3d} r62={3d} r63={3d} r64={3d} r65={3d} r66={3d} r67={3d} r68={3d} r69={3d} r70={3d} r71={3d} r72={3d} r73={3d} r74={3d} r75={3d} 
+;;    total ref usage 572{325d,235u,12e} in 143{140 regular + 3 call} insns.
+(note 1 0 9 NOTE_INSN_DELETED)
+(note 9 1 195 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+(insn/f 195 9 196 2 (set (mem:DI (pre_dec:DI (reg/f:DI 7 sp)) [0  S8 A8])
+        (reg/f:DI 6 bp)) "draw.c":12:1 42 {*pushdi2_rex64}
+     (nil))
+(insn/f 196 195 197 2 (set (reg/f:DI 6 bp)
+        (reg/f:DI 7 sp)) "draw.c":12:1 66 {*movdi_internal}
+     (nil))
+(insn/f 197 196 198 2 (parallel [
+            (set (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int -96 [0xffffffffffffffa0])))
+            (clobber (reg:CC 17 flags))
+            (clobber (mem:BLK (scratch) [0  A8]))
+        ]) "draw.c":12:1 1059 {pro_epilogue_adjust_stack_add_di}
+     (nil))
+(note 198 197 2 2 NOTE_INSN_PROLOGUE_END)
+(insn 2 198 3 2 (set (mem/f/c:DI (plus:DI (reg/f:DI 6 bp)
+                (const_int -72 [0xffffffffffffffb8])) [1 c+0 S8 A64])
+        (reg:DI 5 di [ c ])) "draw.c":12:1 66 {*movdi_internal}
+     (nil))
+(insn 3 2 4 2 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -76 [0xffffffffffffffb4])) [2 drawable+0 S4 A32])
+        (reg:SI 4 si [ drawable ])) "draw.c":12:1 67 {*movsi_internal}
+     (nil))
+(insn 4 3 5 2 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -80 [0xffffffffffffffb0])) [2 gcontext+0 S4 A32])
+        (reg:SI 1 dx [ gcontext ])) "draw.c":12:1 67 {*movsi_internal}
+     (nil))
+(insn 5 4 6 2 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -84 [0xffffffffffffffac])) [2 x1+0 S4 A32])
+        (reg:SI 2 cx [ x1 ])) "draw.c":12:1 67 {*movsi_internal}
+     (nil))
+(insn 6 5 7 2 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -88 [0xffffffffffffffa8])) [2 y1+0 S4 A32])
+        (reg:SI 36 r8 [ y1 ])) "draw.c":12:1 67 {*movsi_internal}
+     (nil))
+(insn 7 6 8 2 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -92 [0xffffffffffffffa4])) [2 x2+0 S4 A32])
+        (reg:SI 37 r9 [ x2 ])) "draw.c":12:1 67 {*movsi_internal}
+     (nil))
+(note 8 7 11 2 NOTE_INSN_FUNCTION_BEG)
+(insn 11 8 12 2 (set (reg:SI 0 ax [94])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -92 [0xffffffffffffffa4])) [2 x2+0 S4 A32])) "draw.c":14:16 67 {*movsi_internal}
+     (nil))
+(insn 12 11 189 2 (parallel [
+            (set (reg:SI 0 ax [orig:82 _1 ] [82])
+                (minus:SI (reg:SI 0 ax [94])
+                    (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                            (const_int -84 [0xffffffffffffffac])) [2 x1+0 S4 A32])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw.c":14:16 254 {*subsi_1}
+     (expr_list:REG_EQUAL (minus:SI (mem/c:SI (plus:DI (reg/f:DI 19 frame)
+                    (const_int -92 [0xffffffffffffffa4])) [2 x2+0 S4 A32])
+            (mem/c:SI (plus:DI (reg/f:DI 19 frame)
+                    (const_int -84 [0xffffffffffffffac])) [2 x1+0 S4 A32]))
+        (nil)))
+(insn 189 12 13 2 (set (reg:SI 2 cx [95])
+        (reg:SI 0 ax [orig:82 _1 ] [82])) "draw.c":14:9 67 {*movsi_internal}
+     (nil))
+(insn 13 189 14 2 (parallel [
+            (set (reg:SI 2 cx [95])
+                (ashiftrt:SI (reg:SI 2 cx [95])
+                    (const_int 31 [0x1f])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw.c":14:9 630 {ashrsi3_cvt}
+     (nil))
+(insn 14 13 192 2 (parallel [
+            (set (reg:SI 0 ax [orig:82 _1 ] [82])
+                (xor:SI (reg:SI 0 ax [orig:82 _1 ] [82])
+                    (reg:SI 2 cx [95])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw.c":14:9 481 {*xorsi_1}
+     (nil))
+(insn 192 14 15 2 (set (reg:SI 1 dx [orig:83 _2 ] [83])
+        (reg:SI 0 ax [orig:82 _1 ] [82])) "draw.c":14:9 67 {*movsi_internal}
+     (nil))
+(insn 15 192 16 2 (parallel [
+            (set (reg:SI 1 dx [orig:83 _2 ] [83])
+                (minus:SI (reg:SI 1 dx [orig:83 _2 ] [83])
+                    (reg:SI 2 cx [95])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw.c":14:9 254 {*subsi_1}
+     (nil))
+(insn 16 15 17 2 (set (reg:SI 0 ax [96])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int 16 [0x10])) [2 y2+0 S4 A64])) "draw.c":14:31 67 {*movsi_internal}
+     (nil))
+(insn 17 16 193 2 (parallel [
+            (set (reg:SI 0 ax [orig:84 _3 ] [84])
+                (minus:SI (reg:SI 0 ax [96])
+                    (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                            (const_int -88 [0xffffffffffffffa8])) [2 y1+0 S4 A32])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw.c":14:31 254 {*subsi_1}
+     (expr_list:REG_EQUAL (minus:SI (mem/c:SI (reg/f:DI 16 argp) [2 y2+0 S4 A64])
+            (mem/c:SI (plus:DI (reg/f:DI 19 frame)
+                    (const_int -88 [0xffffffffffffffa8])) [2 y1+0 S4 A32]))
+        (nil)))
+(insn 193 17 18 2 (set (reg:SI 2 cx [97])
+        (reg:SI 0 ax [orig:84 _3 ] [84])) "draw.c":14:24 67 {*movsi_internal}
+     (nil))
+(insn 18 193 19 2 (parallel [
+            (set (reg:SI 2 cx [97])
+                (ashiftrt:SI (reg:SI 2 cx [97])
+                    (const_int 31 [0x1f])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw.c":14:24 630 {ashrsi3_cvt}
+     (nil))
+(insn 19 18 20 2 (parallel [
+            (set (reg:SI 0 ax [orig:85 _4 ] [85])
+                (xor:SI (reg:SI 0 ax [orig:84 _3 ] [84])
+                    (reg:SI 2 cx [97])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw.c":14:24 481 {*xorsi_1}
+     (nil))
+(insn 20 19 21 2 (parallel [
+            (set (reg:SI 0 ax [orig:85 _4 ] [85])
+                (minus:SI (reg:SI 0 ax [orig:85 _4 ] [85])
+                    (reg:SI 2 cx [97])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw.c":14:24 254 {*subsi_1}
+     (nil))
+(insn 21 20 22 2 (set (reg:CCGC 17 flags)
+        (compare:CCGC (reg:SI 1 dx [orig:83 _2 ] [83])
+            (reg:SI 0 ax [orig:85 _4 ] [85]))) "draw.c":14:8 11 {*cmpsi_1}
+     (nil))
+(jump_insn 22 21 23 2 (set (pc)
+        (if_then_else (le (reg:CCGC 17 flags)
+                (const_int 0 [0]))
+            (label_ref 98)
+            (pc))) "draw.c":14:8 736 {*jcc}
+     (nil)
+ -> 98)
+(note 23 22 24 3 [bb 3] NOTE_INSN_BASIC_BLOCK)
+(insn 24 23 25 3 (set (reg:SI 0 ax [98])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -84 [0xffffffffffffffac])) [2 x1+0 S4 A32])) "draw.c":17:12 67 {*movsi_internal}
+     (nil))
+(insn 25 24 26 3 (set (reg:CCGC 17 flags)
+        (compare:CCGC (reg:SI 0 ax [98])
+            (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                    (const_int -92 [0xffffffffffffffa4])) [2 x2+0 S4 A32]))) "draw.c":17:12 11 {*cmpsi_1}
+     (nil))
+(jump_insn 26 25 27 3 (set (pc)
+        (if_then_else (le (reg:CCGC 17 flags)
+                (const_int 0 [0]))
+            (label_ref 40)
+            (pc))) "draw.c":17:12 736 {*jcc}
+     (nil)
+ -> 40)
+(note 27 26 28 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+(insn 28 27 29 4 (set (reg:SI 0 ax [99])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -84 [0xffffffffffffffac])) [2 x1+0 S4 A32])) "draw.c":19:17 67 {*movsi_internal}
+     (nil))
+(insn 29 28 30 4 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -36 [0xffffffffffffffdc])) [2 temp+0 S4 A32])
+        (reg:SI 0 ax [99])) "draw.c":19:17 67 {*movsi_internal}
+     (nil))
+(insn 30 29 31 4 (set (reg:SI 0 ax [100])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -92 [0xffffffffffffffa4])) [2 x2+0 S4 A32])) "draw.c":20:16 67 {*movsi_internal}
+     (nil))
+(insn 31 30 32 4 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -84 [0xffffffffffffffac])) [2 x1+0 S4 A32])
+        (reg:SI 0 ax [100])) "draw.c":20:16 67 {*movsi_internal}
+     (nil))
+(insn 32 31 33 4 (set (reg:SI 0 ax [101])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -36 [0xffffffffffffffdc])) [2 temp+0 S4 A32])) "draw.c":21:16 67 {*movsi_internal}
+     (nil))
+(insn 33 32 34 4 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -92 [0xffffffffffffffa4])) [2 x2+0 S4 A32])
+        (reg:SI 0 ax [101])) "draw.c":21:16 67 {*movsi_internal}
+     (nil))
+(insn 34 33 35 4 (set (reg:SI 0 ax [102])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -88 [0xffffffffffffffa8])) [2 y1+0 S4 A32])) "draw.c":22:18 67 {*movsi_internal}
+     (nil))
+(insn 35 34 36 4 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -36 [0xffffffffffffffdc])) [2 temp+0 S4 A32])
+        (reg:SI 0 ax [102])) "draw.c":22:18 67 {*movsi_internal}
+     (nil))
+(insn 36 35 37 4 (set (reg:SI 0 ax [103])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int 16 [0x10])) [2 y2+0 S4 A64])) "draw.c":23:16 67 {*movsi_internal}
+     (nil))
+(insn 37 36 38 4 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -88 [0xffffffffffffffa8])) [2 y1+0 S4 A32])
+        (reg:SI 0 ax [103])) "draw.c":23:16 67 {*movsi_internal}
+     (nil))
+(insn 38 37 39 4 (set (reg:SI 0 ax [104])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -36 [0xffffffffffffffdc])) [2 temp+0 S4 A32])) "draw.c":24:16 67 {*movsi_internal}
+     (nil))
+(insn 39 38 40 4 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int 16 [0x10])) [2 y2+0 S4 A64])
+        (reg:SI 0 ax [104])) "draw.c":24:16 67 {*movsi_internal}
+     (nil))
+(code_label 40 39 41 5 4 (nil) [1 uses])
+(note 41 40 45 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+(insn 45 41 46 5 (set (reg:SI 0 ax [108])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int 16 [0x10])) [2 y2+0 S4 A64])) "draw.c":27:13 67 {*movsi_internal}
+     (nil))
+(insn 46 45 47 5 (parallel [
+            (set (reg:SI 0 ax [107])
+                (minus:SI (reg:SI 0 ax [108])
+                    (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                            (const_int -88 [0xffffffffffffffa8])) [2 y1+0 S4 A32])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw.c":27:13 254 {*subsi_1}
+     (expr_list:REG_EQUAL (minus:SI (mem/c:SI (reg/f:DI 16 argp) [2 y2+0 S4 A64])
+            (mem/c:SI (plus:DI (reg/f:DI 19 frame)
+                    (const_int -88 [0xffffffffffffffa8])) [2 y1+0 S4 A32]))
+        (nil)))
+(insn 47 46 51 5 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -40 [0xffffffffffffffd8])) [2 dy+0 S4 A32])
+        (reg:SI 0 ax [107])) "draw.c":27:13 67 {*movsi_internal}
+     (nil))
+(insn 51 47 52 5 (set (reg:SI 0 ax [112])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -92 [0xffffffffffffffa4])) [2 x2+0 S4 A32])) "draw.c":28:13 67 {*movsi_internal}
+     (nil))
+(insn 52 51 53 5 (parallel [
+            (set (reg:SI 0 ax [111])
+                (minus:SI (reg:SI 0 ax [112])
+                    (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                            (const_int -84 [0xffffffffffffffac])) [2 x1+0 S4 A32])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw.c":28:13 254 {*subsi_1}
+     (expr_list:REG_EQUAL (minus:SI (mem/c:SI (plus:DI (reg/f:DI 19 frame)
+                    (const_int -92 [0xffffffffffffffa4])) [2 x2+0 S4 A32])
+            (mem/c:SI (plus:DI (reg/f:DI 19 frame)
+                    (const_int -84 [0xffffffffffffffac])) [2 x1+0 S4 A32]))
+        (nil)))
+(insn 53 52 211 5 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -44 [0xffffffffffffffd4])) [2 dx+0 S4 A32])
+        (reg:SI 0 ax [111])) "draw.c":28:13 67 {*movsi_internal}
+     (nil))
+(insn 211 53 212 5 (set (reg:V4SF 20 xmm0 [orig:86 _5 ] [86])
+        (const_vector:V4SF [
+                (const_double:SF 0.0 [0x0.0p+0]) repeated x4
+            ])) "draw.c":29:19 1335 {movv4sf_internal}
+     (nil))
+(insn 212 211 213 5 (set (reg:V4SF 20 xmm0 [orig:86 _5 ] [86])
+        (vec_merge:V4SF (vec_duplicate:V4SF (float:SF (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                            (const_int -40 [0xffffffffffffffd8])) [2 dy+0 S4 A32])))
+            (reg:V4SF 20 xmm0 [orig:86 _5 ] [86])
+            (const_int 1 [0x1]))) "draw.c":29:19 2490 {sse_cvtsi2ss}
+     (nil))
+(insn 213 212 214 5 (set (reg:V4SF 21 xmm1 [orig:87 _6 ] [87])
+        (const_vector:V4SF [
+                (const_double:SF 0.0 [0x0.0p+0]) repeated x4
+            ])) "draw.c":29:29 1335 {movv4sf_internal}
+     (nil))
+(insn 214 213 56 5 (set (reg:V4SF 21 xmm1 [orig:87 _6 ] [87])
+        (vec_merge:V4SF (vec_duplicate:V4SF (float:SF (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                            (const_int -44 [0xffffffffffffffd4])) [2 dx+0 S4 A32])))
+            (reg:V4SF 21 xmm1 [orig:87 _6 ] [87])
+            (const_int 1 [0x1]))) "draw.c":29:29 2490 {sse_cvtsi2ss}
+     (nil))
+(insn 56 214 57 5 (set (reg:SF 20 xmm0 [113])
+        (div:SF (reg:SF 20 xmm0 [orig:86 _5 ] [86])
+            (reg:SF 21 xmm1 [orig:87 _6 ] [87]))) "draw.c":29:15 907 {*fop_sf_1}
+     (nil))
+(insn 57 56 215 5 (set (mem/c:SF (plus:DI (reg/f:DI 6 bp)
+                (const_int -48 [0xffffffffffffffd0])) [3 a+0 S4 A32])
+        (reg:SF 20 xmm0 [113])) "draw.c":29:15 112 {*movsf_internal}
+     (nil))
+(insn 215 57 216 5 (set (reg:V4SF 20 xmm0 [114])
+        (const_vector:V4SF [
+                (const_double:SF 0.0 [0x0.0p+0]) repeated x4
+            ])) "draw.c":30:15 1335 {movv4sf_internal}
+     (nil))
+(insn 216 215 59 5 (set (reg:V4SF 20 xmm0 [114])
+        (vec_merge:V4SF (vec_duplicate:V4SF (float:SF (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                            (const_int -88 [0xffffffffffffffa8])) [2 y1+0 S4 A32])))
+            (reg:V4SF 20 xmm0 [114])
+            (const_int 1 [0x1]))) "draw.c":30:15 2490 {sse_cvtsi2ss}
+     (nil))
+(insn 59 216 60 5 (set (mem/c:SF (plus:DI (reg/f:DI 6 bp)
+                (const_int -4 [0xfffffffffffffffc])) [3 y+0 S4 A32])
+        (reg:SF 20 xmm0 [114])) "draw.c":30:15 112 {*movsf_internal}
+     (nil))
+(insn 60 59 61 5 (set (mem/c:HI (plus:DI (reg/f:DI 6 bp)
+                (const_int -52 [0xffffffffffffffcc])) [5 point[0].x+0 S2 A32])
+        (const_int 0 [0])) "draw.c":31:21 68 {*movhi_internal}
+     (nil))
+(insn 61 60 62 5 (set (mem/c:HI (plus:DI (reg/f:DI 6 bp)
+                (const_int -50 [0xffffffffffffffce])) [5 point[0].y+0 S2 A16])
+        (const_int 0 [0])) "draw.c":31:21 68 {*movhi_internal}
+     (nil))
+(insn 62 61 63 5 (set (reg:SI 0 ax [115])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -84 [0xffffffffffffffac])) [2 x1+0 S4 A32])) "draw.c":33:18 67 {*movsi_internal}
+     (nil))
+(insn 63 62 179 5 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -8 [0xfffffffffffffff8])) [2 x+0 S4 A32])
+        (reg:SI 0 ax [115])) "draw.c":33:18 67 {*movsi_internal}
+     (nil))
+(jump_insn 179 63 180 5 (set (pc)
+        (label_ref 89)) "draw.c":33:9 737 {jump}
+     (nil)
+ -> 89)
+(barrier 180 179 91)
+(code_label 91 180 66 6 6 (nil) [1 uses])
+(note 66 91 67 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+(insn 67 66 69 6 (set (reg:SI 0 ax [116])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -8 [0xfffffffffffffff8])) [2 x+0 S4 A32])) "draw.c":35:24 67 {*movsi_internal}
+     (nil))
+(insn 69 67 70 6 (set (mem/c:HI (plus:DI (reg/f:DI 6 bp)
+                (const_int -52 [0xffffffffffffffcc])) [5 point[0].x+0 S2 A32])
+        (reg:HI 0 ax [orig:88 _7 ] [88])) "draw.c":35:24 68 {*movhi_internal}
+     (nil))
+(insn 70 69 71 6 (set (reg:SF 20 xmm0 [118])
+        (mem/c:SF (plus:DI (reg/f:DI 6 bp)
+                (const_int -4 [0xfffffffffffffffc])) [3 y+0 S4 A32])) "draw.c":36:24 112 {*movsf_internal}
+     (nil))
+(insn 71 70 73 6 (set (reg:SI 0 ax [117])
+        (fix:SI (reg:SF 20 xmm0 [118]))) "draw.c":36:24 146 {fix_truncsfsi_sse}
+     (nil))
+(insn 73 71 210 6 (set (mem/c:HI (plus:DI (reg/f:DI 6 bp)
+                (const_int -50 [0xffffffffffffffce])) [5 point[0].y+0 S2 A16])
+        (reg:HI 0 ax [orig:89 _8 ] [89])) "draw.c":36:24 68 {*movhi_internal}
+     (nil))
+(insn 210 73 75 6 (set (reg:DI 4 si [119])
+        (plus:DI (reg/f:DI 6 bp)
+            (const_int -52 [0xffffffffffffffcc]))) "draw.c":37:13 182 {*leadi}
+     (nil))
+(insn 75 210 76 6 (set (reg:SI 2 cx [120])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -80 [0xffffffffffffffb0])) [2 gcontext+0 S4 A32])) "draw.c":37:13 67 {*movsi_internal}
+     (nil))
+(insn 76 75 77 6 (set (reg:SI 1 dx [121])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -76 [0xffffffffffffffb4])) [2 drawable+0 S4 A32])) "draw.c":37:13 67 {*movsi_internal}
+     (nil))
+(insn 77 76 78 6 (set (reg:DI 0 ax [122])
+        (mem/f/c:DI (plus:DI (reg/f:DI 6 bp)
+                (const_int -72 [0xffffffffffffffb8])) [1 c+0 S8 A64])) "draw.c":37:13 66 {*movdi_internal}
+     (nil))
+(insn 78 77 79 6 (set (reg:DI 37 r9)
+        (reg:DI 4 si [119])) "draw.c":37:13 66 {*movdi_internal}
+     (nil))
+(insn 79 78 82 6 (set (reg:SI 36 r8)
+        (const_int 1 [0x1])) "draw.c":37:13 67 {*movsi_internal}
+     (nil))
+(insn 82 79 83 6 (set (reg:SI 4 si)
+        (const_int 0 [0])) "draw.c":37:13 67 {*movsi_internal}
+     (nil))
+(insn 83 82 84 6 (set (reg:DI 5 di)
+        (reg:DI 0 ax [122])) "draw.c":37:13 66 {*movdi_internal}
+     (nil))
+(call_insn 84 83 85 6 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("xcb_poly_point") [flags 0x41]  <function_decl 0x7fa66e9b4600 xcb_poly_point>) [0 xcb_poly_point S1 A8])
+            (const_int 0 [0]))) "draw.c":37:13 754 {*call_value}
+     (nil)
+    (expr_list:DI (use (reg:DI 5 di))
+        (expr_list:SI (use (reg:SI 4 si))
+            (expr_list:SI (use (reg:SI 1 dx))
+                (expr_list:SI (use (reg:SI 2 cx))
+                    (expr_list:SI (use (reg:SI 36 r8))
+                        (expr_list:DI (use (reg:DI 37 r9))
+                            (nil))))))))
+(insn 85 84 86 6 (set (reg:SF 20 xmm0 [124])
+        (mem/c:SF (plus:DI (reg/f:DI 6 bp)
+                (const_int -4 [0xfffffffffffffffc])) [3 y+0 S4 A32])) "draw.c":38:15 112 {*movsf_internal}
+     (nil))
+(insn 86 85 87 6 (set (reg:SF 20 xmm0 [123])
+        (plus:SF (reg:SF 20 xmm0 [124])
+            (mem/c:SF (plus:DI (reg/f:DI 6 bp)
+                    (const_int -48 [0xffffffffffffffd0])) [3 a+0 S4 A32]))) "draw.c":38:15 903 {*fop_sf_comm}
+     (nil))
+(insn 87 86 88 6 (set (mem/c:SF (plus:DI (reg/f:DI 6 bp)
+                (const_int -4 [0xfffffffffffffffc])) [3 y+0 S4 A32])
+        (reg:SF 20 xmm0 [123])) "draw.c":38:15 112 {*movsf_internal}
+     (nil))
+(insn 88 87 89 6 (parallel [
+            (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                        (const_int -8 [0xfffffffffffffff8])) [2 x+0 S4 A32])
+                (plus:SI (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                            (const_int -8 [0xfffffffffffffff8])) [2 x+0 S4 A32])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw.c":33:36 185 {*addsi_1}
+     (nil))
+(code_label 89 88 90 7 5 (nil) [1 uses])
+(note 90 89 92 7 [bb 7] NOTE_INSN_BASIC_BLOCK)
+(insn 92 90 93 7 (set (reg:SI 0 ax [125])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -8 [0xfffffffffffffff8])) [2 x+0 S4 A32])) "draw.c":33:9 67 {*movsi_internal}
+     (nil))
+(insn 93 92 94 7 (set (reg:CCGC 17 flags)
+        (compare:CCGC (reg:SI 0 ax [125])
+            (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                    (const_int -92 [0xffffffffffffffa4])) [2 x2+0 S4 A32]))) "draw.c":33:9 11 {*cmpsi_1}
+     (nil))
+(jump_insn 94 93 181 7 (set (pc)
+        (if_then_else (le (reg:CCGC 17 flags)
+                (const_int 0 [0]))
+            (label_ref 91)
+            (pc))) "draw.c":33:9 736 {*jcc}
+     (nil)
+ -> 91)
+(note 181 94 182 8 [bb 8] NOTE_INSN_BASIC_BLOCK)
+(jump_insn 182 181 183 8 (set (pc)
+        (label_ref 172)) 737 {jump}
+     (nil)
+ -> 172)
+(barrier 183 182 98)
+(code_label 98 183 99 9 3 (nil) [1 uses])
+(note 99 98 100 9 [bb 9] NOTE_INSN_BASIC_BLOCK)
+(insn 100 99 101 9 (set (reg:SI 0 ax [126])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -88 [0xffffffffffffffa8])) [2 y1+0 S4 A32])) "draw.c":44:12 67 {*movsi_internal}
+     (nil))
+(insn 101 100 102 9 (set (reg:CCGC 17 flags)
+        (compare:CCGC (reg:SI 0 ax [126])
+            (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                    (const_int 16 [0x10])) [2 y2+0 S4 A64]))) "draw.c":44:12 11 {*cmpsi_1}
+     (nil))
+(jump_insn 102 101 103 9 (set (pc)
+        (if_then_else (le (reg:CCGC 17 flags)
+                (const_int 0 [0]))
+            (label_ref 116)
+            (pc))) "draw.c":44:12 736 {*jcc}
+     (nil)
+ -> 116)
+(note 103 102 104 10 [bb 10] NOTE_INSN_BASIC_BLOCK)
+(insn 104 103 105 10 (set (reg:SI 0 ax [127])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -84 [0xffffffffffffffac])) [2 x1+0 S4 A32])) "draw.c":46:17 67 {*movsi_internal}
+     (nil))
+(insn 105 104 106 10 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -20 [0xffffffffffffffec])) [2 temp+0 S4 A32])
+        (reg:SI 0 ax [127])) "draw.c":46:17 67 {*movsi_internal}
+     (nil))
+(insn 106 105 107 10 (set (reg:SI 0 ax [128])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -92 [0xffffffffffffffa4])) [2 x2+0 S4 A32])) "draw.c":47:16 67 {*movsi_internal}
+     (nil))
+(insn 107 106 108 10 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -84 [0xffffffffffffffac])) [2 x1+0 S4 A32])
+        (reg:SI 0 ax [128])) "draw.c":47:16 67 {*movsi_internal}
+     (nil))
+(insn 108 107 109 10 (set (reg:SI 0 ax [129])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -20 [0xffffffffffffffec])) [2 temp+0 S4 A32])) "draw.c":48:16 67 {*movsi_internal}
+     (nil))
+(insn 109 108 110 10 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -92 [0xffffffffffffffa4])) [2 x2+0 S4 A32])
+        (reg:SI 0 ax [129])) "draw.c":48:16 67 {*movsi_internal}
+     (nil))
+(insn 110 109 111 10 (set (reg:SI 0 ax [130])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -88 [0xffffffffffffffa8])) [2 y1+0 S4 A32])) "draw.c":49:18 67 {*movsi_internal}
+     (nil))
+(insn 111 110 112 10 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -20 [0xffffffffffffffec])) [2 temp+0 S4 A32])
+        (reg:SI 0 ax [130])) "draw.c":49:18 67 {*movsi_internal}
+     (nil))
+(insn 112 111 113 10 (set (reg:SI 0 ax [131])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int 16 [0x10])) [2 y2+0 S4 A64])) "draw.c":50:16 67 {*movsi_internal}
+     (nil))
+(insn 113 112 114 10 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -88 [0xffffffffffffffa8])) [2 y1+0 S4 A32])
+        (reg:SI 0 ax [131])) "draw.c":50:16 67 {*movsi_internal}
+     (nil))
+(insn 114 113 115 10 (set (reg:SI 0 ax [132])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -20 [0xffffffffffffffec])) [2 temp+0 S4 A32])) "draw.c":51:16 67 {*movsi_internal}
+     (nil))
+(insn 115 114 116 10 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int 16 [0x10])) [2 y2+0 S4 A64])
+        (reg:SI 0 ax [132])) "draw.c":51:16 67 {*movsi_internal}
+     (nil))
+(code_label 116 115 117 11 8 (nil) [1 uses])
+(note 117 116 121 11 [bb 11] NOTE_INSN_BASIC_BLOCK)
+(insn 121 117 122 11 (set (reg:SI 0 ax [136])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int 16 [0x10])) [2 y2+0 S4 A64])) "draw.c":53:13 67 {*movsi_internal}
+     (nil))
+(insn 122 121 123 11 (parallel [
+            (set (reg:SI 0 ax [135])
+                (minus:SI (reg:SI 0 ax [136])
+                    (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                            (const_int -88 [0xffffffffffffffa8])) [2 y1+0 S4 A32])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw.c":53:13 254 {*subsi_1}
+     (expr_list:REG_EQUAL (minus:SI (mem/c:SI (reg/f:DI 16 argp) [2 y2+0 S4 A64])
+            (mem/c:SI (plus:DI (reg/f:DI 19 frame)
+                    (const_int -88 [0xffffffffffffffa8])) [2 y1+0 S4 A32]))
+        (nil)))
+(insn 123 122 127 11 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -24 [0xffffffffffffffe8])) [2 dy+0 S4 A32])
+        (reg:SI 0 ax [135])) "draw.c":53:13 67 {*movsi_internal}
+     (nil))
+(insn 127 123 128 11 (set (reg:SI 0 ax [140])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -92 [0xffffffffffffffa4])) [2 x2+0 S4 A32])) "draw.c":54:13 67 {*movsi_internal}
+     (nil))
+(insn 128 127 129 11 (parallel [
+            (set (reg:SI 0 ax [139])
+                (minus:SI (reg:SI 0 ax [140])
+                    (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                            (const_int -84 [0xffffffffffffffac])) [2 x1+0 S4 A32])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw.c":54:13 254 {*subsi_1}
+     (expr_list:REG_EQUAL (minus:SI (mem/c:SI (plus:DI (reg/f:DI 19 frame)
+                    (const_int -92 [0xffffffffffffffa4])) [2 x2+0 S4 A32])
+            (mem/c:SI (plus:DI (reg/f:DI 19 frame)
+                    (const_int -84 [0xffffffffffffffac])) [2 x1+0 S4 A32]))
+        (nil)))
+(insn 129 128 204 11 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -28 [0xffffffffffffffe4])) [2 dx+0 S4 A32])
+        (reg:SI 0 ax [139])) "draw.c":54:13 67 {*movsi_internal}
+     (nil))
+(insn 204 129 205 11 (set (reg:V4SF 20 xmm0 [orig:90 _9 ] [90])
+        (const_vector:V4SF [
+                (const_double:SF 0.0 [0x0.0p+0]) repeated x4
+            ])) "draw.c":55:19 1335 {movv4sf_internal}
+     (nil))
+(insn 205 204 206 11 (set (reg:V4SF 20 xmm0 [orig:90 _9 ] [90])
+        (vec_merge:V4SF (vec_duplicate:V4SF (float:SF (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                            (const_int -28 [0xffffffffffffffe4])) [2 dx+0 S4 A32])))
+            (reg:V4SF 20 xmm0 [orig:90 _9 ] [90])
+            (const_int 1 [0x1]))) "draw.c":55:19 2490 {sse_cvtsi2ss}
+     (nil))
+(insn 206 205 207 11 (set (reg:V4SF 21 xmm1 [orig:91 _10 ] [91])
+        (const_vector:V4SF [
+                (const_double:SF 0.0 [0x0.0p+0]) repeated x4
+            ])) "draw.c":55:29 1335 {movv4sf_internal}
+     (nil))
+(insn 207 206 132 11 (set (reg:V4SF 21 xmm1 [orig:91 _10 ] [91])
+        (vec_merge:V4SF (vec_duplicate:V4SF (float:SF (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                            (const_int -24 [0xffffffffffffffe8])) [2 dy+0 S4 A32])))
+            (reg:V4SF 21 xmm1 [orig:91 _10 ] [91])
+            (const_int 1 [0x1]))) "draw.c":55:29 2490 {sse_cvtsi2ss}
+     (nil))
+(insn 132 207 133 11 (set (reg:SF 20 xmm0 [141])
+        (div:SF (reg:SF 20 xmm0 [orig:90 _9 ] [90])
+            (reg:SF 21 xmm1 [orig:91 _10 ] [91]))) "draw.c":55:15 907 {*fop_sf_1}
+     (nil))
+(insn 133 132 208 11 (set (mem/c:SF (plus:DI (reg/f:DI 6 bp)
+                (const_int -32 [0xffffffffffffffe0])) [3 a+0 S4 A32])
+        (reg:SF 20 xmm0 [141])) "draw.c":55:15 112 {*movsf_internal}
+     (nil))
+(insn 208 133 209 11 (set (reg:V4SF 20 xmm0 [142])
+        (const_vector:V4SF [
+                (const_double:SF 0.0 [0x0.0p+0]) repeated x4
+            ])) "draw.c":56:15 1335 {movv4sf_internal}
+     (nil))
+(insn 209 208 135 11 (set (reg:V4SF 20 xmm0 [142])
+        (vec_merge:V4SF (vec_duplicate:V4SF (float:SF (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                            (const_int -84 [0xffffffffffffffac])) [2 x1+0 S4 A32])))
+            (reg:V4SF 20 xmm0 [142])
+            (const_int 1 [0x1]))) "draw.c":56:15 2490 {sse_cvtsi2ss}
+     (nil))
+(insn 135 209 136 11 (set (mem/c:SF (plus:DI (reg/f:DI 6 bp)
+                (const_int -12 [0xfffffffffffffff4])) [3 x+0 S4 A32])
+        (reg:SF 20 xmm0 [142])) "draw.c":56:15 112 {*movsf_internal}
+     (nil))
+(insn 136 135 137 11 (set (mem/c:HI (plus:DI (reg/f:DI 6 bp)
+                (const_int -56 [0xffffffffffffffc8])) [5 point[0].x+0 S2 A64])
+        (const_int 0 [0])) "draw.c":57:21 68 {*movhi_internal}
+     (nil))
+(insn 137 136 138 11 (set (mem/c:HI (plus:DI (reg/f:DI 6 bp)
+                (const_int -54 [0xffffffffffffffca])) [5 point[0].y+0 S2 A16])
+        (const_int 0 [0])) "draw.c":57:21 68 {*movhi_internal}
+     (nil))
+(insn 138 137 139 11 (set (reg:SI 0 ax [143])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -88 [0xffffffffffffffa8])) [2 y1+0 S4 A32])) "draw.c":59:18 67 {*movsi_internal}
+     (nil))
+(insn 139 138 184 11 (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -16 [0xfffffffffffffff0])) [2 y+0 S4 A32])
+        (reg:SI 0 ax [143])) "draw.c":59:18 67 {*movsi_internal}
+     (nil))
+(jump_insn 184 139 185 11 (set (pc)
+        (label_ref 165)) "draw.c":59:9 737 {jump}
+     (nil)
+ -> 165)
+(barrier 185 184 167)
+(code_label 167 185 142 12 10 (nil) [1 uses])
+(note 142 167 143 12 [bb 12] NOTE_INSN_BASIC_BLOCK)
+(insn 143 142 144 12 (set (reg:SF 20 xmm0 [145])
+        (mem/c:SF (plus:DI (reg/f:DI 6 bp)
+                (const_int -12 [0xfffffffffffffff4])) [3 x+0 S4 A32])) "draw.c":61:24 112 {*movsf_internal}
+     (nil))
+(insn 144 143 146 12 (set (reg:SI 0 ax [144])
+        (fix:SI (reg:SF 20 xmm0 [145]))) "draw.c":61:24 146 {fix_truncsfsi_sse}
+     (nil))
+(insn 146 144 147 12 (set (mem/c:HI (plus:DI (reg/f:DI 6 bp)
+                (const_int -56 [0xffffffffffffffc8])) [5 point[0].x+0 S2 A64])
+        (reg:HI 0 ax [orig:92 _11 ] [92])) "draw.c":61:24 68 {*movhi_internal}
+     (nil))
+(insn 147 146 149 12 (set (reg:SI 0 ax [146])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -16 [0xfffffffffffffff0])) [2 y+0 S4 A32])) "draw.c":62:24 67 {*movsi_internal}
+     (nil))
+(insn 149 147 203 12 (set (mem/c:HI (plus:DI (reg/f:DI 6 bp)
+                (const_int -54 [0xffffffffffffffca])) [5 point[0].y+0 S2 A16])
+        (reg:HI 0 ax [orig:93 _12 ] [93])) "draw.c":62:24 68 {*movhi_internal}
+     (nil))
+(insn 203 149 151 12 (set (reg:DI 4 si [147])
+        (plus:DI (reg/f:DI 6 bp)
+            (const_int -56 [0xffffffffffffffc8]))) "draw.c":63:13 182 {*leadi}
+     (nil))
+(insn 151 203 152 12 (set (reg:SI 2 cx [148])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -80 [0xffffffffffffffb0])) [2 gcontext+0 S4 A32])) "draw.c":63:13 67 {*movsi_internal}
+     (nil))
+(insn 152 151 153 12 (set (reg:SI 1 dx [149])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -76 [0xffffffffffffffb4])) [2 drawable+0 S4 A32])) "draw.c":63:13 67 {*movsi_internal}
+     (nil))
+(insn 153 152 154 12 (set (reg:DI 0 ax [150])
+        (mem/f/c:DI (plus:DI (reg/f:DI 6 bp)
+                (const_int -72 [0xffffffffffffffb8])) [1 c+0 S8 A64])) "draw.c":63:13 66 {*movdi_internal}
+     (nil))
+(insn 154 153 155 12 (set (reg:DI 37 r9)
+        (reg:DI 4 si [147])) "draw.c":63:13 66 {*movdi_internal}
+     (nil))
+(insn 155 154 158 12 (set (reg:SI 36 r8)
+        (const_int 1 [0x1])) "draw.c":63:13 67 {*movsi_internal}
+     (nil))
+(insn 158 155 159 12 (set (reg:SI 4 si)
+        (const_int 0 [0])) "draw.c":63:13 67 {*movsi_internal}
+     (nil))
+(insn 159 158 160 12 (set (reg:DI 5 di)
+        (reg:DI 0 ax [150])) "draw.c":63:13 66 {*movdi_internal}
+     (nil))
+(call_insn 160 159 161 12 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("xcb_poly_point") [flags 0x41]  <function_decl 0x7fa66e9b4600 xcb_poly_point>) [0 xcb_poly_point S1 A8])
+            (const_int 0 [0]))) "draw.c":63:13 754 {*call_value}
+     (nil)
+    (expr_list:DI (use (reg:DI 5 di))
+        (expr_list:SI (use (reg:SI 4 si))
+            (expr_list:SI (use (reg:SI 1 dx))
+                (expr_list:SI (use (reg:SI 2 cx))
+                    (expr_list:SI (use (reg:SI 36 r8))
+                        (expr_list:DI (use (reg:DI 37 r9))
+                            (nil))))))))
+(insn 161 160 162 12 (set (reg:SF 20 xmm0 [152])
+        (mem/c:SF (plus:DI (reg/f:DI 6 bp)
+                (const_int -12 [0xfffffffffffffff4])) [3 x+0 S4 A32])) "draw.c":64:15 112 {*movsf_internal}
+     (nil))
+(insn 162 161 163 12 (set (reg:SF 20 xmm0 [151])
+        (plus:SF (reg:SF 20 xmm0 [152])
+            (mem/c:SF (plus:DI (reg/f:DI 6 bp)
+                    (const_int -32 [0xffffffffffffffe0])) [3 a+0 S4 A32]))) "draw.c":64:15 903 {*fop_sf_comm}
+     (nil))
+(insn 163 162 164 12 (set (mem/c:SF (plus:DI (reg/f:DI 6 bp)
+                (const_int -12 [0xfffffffffffffff4])) [3 x+0 S4 A32])
+        (reg:SF 20 xmm0 [151])) "draw.c":64:15 112 {*movsf_internal}
+     (nil))
+(insn 164 163 165 12 (parallel [
+            (set (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                        (const_int -16 [0xfffffffffffffff0])) [2 y+0 S4 A32])
+                (plus:SI (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                            (const_int -16 [0xfffffffffffffff0])) [2 y+0 S4 A32])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw.c":59:36 185 {*addsi_1}
+     (nil))
+(code_label 165 164 166 13 9 (nil) [1 uses])
+(note 166 165 168 13 [bb 13] NOTE_INSN_BASIC_BLOCK)
+(insn 168 166 169 13 (set (reg:SI 0 ax [153])
+        (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                (const_int -16 [0xfffffffffffffff0])) [2 y+0 S4 A32])) "draw.c":59:9 67 {*movsi_internal}
+     (nil))
+(insn 169 168 170 13 (set (reg:CCGC 17 flags)
+        (compare:CCGC (reg:SI 0 ax [153])
+            (mem/c:SI (plus:DI (reg/f:DI 6 bp)
+                    (const_int 16 [0x10])) [2 y2+0 S4 A64]))) "draw.c":59:9 11 {*cmpsi_1}
+     (nil))
+(jump_insn 170 169 172 13 (set (pc)
+        (if_then_else (le (reg:CCGC 17 flags)
+                (const_int 0 [0]))
+            (label_ref 167)
+            (pc))) "draw.c":59:9 736 {*jcc}
+     (nil)
+ -> 167)
+(code_label 172 170 173 14 7 (nil) [1 uses])
+(note 173 172 174 14 [bb 14] NOTE_INSN_BASIC_BLOCK)
+(insn 174 173 175 14 (set (reg:DI 0 ax [154])
+        (mem/f/c:DI (plus:DI (reg/f:DI 6 bp)
+                (const_int -72 [0xffffffffffffffb8])) [1 c+0 S8 A64])) "draw.c":68:5 66 {*movdi_internal}
+     (nil))
+(insn 175 174 176 14 (set (reg:DI 5 di)
+        (reg:DI 0 ax [154])) "draw.c":68:5 66 {*movdi_internal}
+     (nil))
+(call_insn 176 175 187 14 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("xcb_flush") [flags 0x41]  <function_decl 0x7fa66ea0e700 xcb_flush>) [0 xcb_flush S1 A8])
+            (const_int 0 [0]))) "draw.c":68:5 754 {*call_value}
+     (nil)
+    (expr_list:DI (use (reg:DI 5 di))
+        (nil)))
+(insn 187 176 199 14 (const_int 0 [0]) "draw.c":69:1 773 {nop}
+     (nil))
+(note 199 187 200 14 NOTE_INSN_EPILOGUE_BEG)
+(insn/f 200 199 201 14 (parallel [
+            (set (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 6 bp)
+                    (const_int 8 [0x8])))
+            (set (reg/f:DI 6 bp)
+                (mem:DI (reg/f:DI 6 bp) [0  S8 A8]))
+            (clobber (mem:BLK (scratch) [0  A8]))
+        ]) "draw.c":69:1 783 {*leave_rex64}
+     (expr_list:REG_CFA_DEF_CFA (plus:DI (reg/f:DI 7 sp)
+            (const_int 8 [0x8]))
+        (nil)))
+(jump_insn 201 200 202 14 (simple_return) "draw.c":69:1 767 {simple_return_internal}
+     (nil)
+ -> simple_return)
+(barrier 202 201 188)
+(note 188 202 0 NOTE_INSN_DELETED)

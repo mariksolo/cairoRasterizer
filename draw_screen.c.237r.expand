@@ -1,0 +1,273 @@
+
+;; Function draw_screen (draw_screen, funcdef_no=6, decl_uid=8757, cgraph_uid=7, symbol_order=6)
+
+draw_screen (struct xcb_connection_t * c, xcb_drawable_t drawable, xcb_gcontext_t gcontext)
+{
+;;   basic block 2, loop depth 0
+;;    pred:       ENTRY
+  draw_wireframe_triangle (c_2(D), drawable_3(D), gcontext_4(D), 0, 0, 150, 100, 300, 90);
+  return;
+;;    succ:       EXIT
+
+}
+
+
+
+Partition map 
+
+Partition 2 (c_2(D) - 2 )
+Partition 3 (drawable_3(D) - 3 )
+Partition 4 (gcontext_4(D) - 4 )
+
+
+Coalescible Partition map 
+
+Partition 0, base 0 (c_2(D) - 2 )
+Partition 1, base 1 (drawable_3(D) - 3 )
+Partition 2, base 2 (gcontext_4(D) - 4 )
+
+
+Partition map 
+
+Partition 0 (c_2(D) - 2 )
+Partition 1 (drawable_3(D) - 3 )
+Partition 2 (gcontext_4(D) - 4 )
+
+
+Conflict graph:
+
+After sorting:
+Coalesce List:
+
+Partition map 
+
+Partition 0 (c_2(D) - 2 )
+Partition 1 (drawable_3(D) - 3 )
+Partition 2 (gcontext_4(D) - 4 )
+
+After Coalescing:
+
+Partition map 
+
+Partition 0 (c_2(D) - 2 )
+Partition 1 (drawable_3(D) - 3 )
+Partition 2 (gcontext_4(D) - 4 )
+
+draw_screen (struct xcb_connection_t * c, xcb_drawable_t drawable, xcb_gcontext_t gcontext)
+{
+;;   basic block 2, loop depth 0
+;;    pred:       ENTRY
+  draw_wireframe_triangle (c_2(D), drawable_3(D), gcontext_4(D), 0, 0, 150, 100, 300, 90);
+  return;
+;;    succ:       EXIT
+
+}
+
+
+
+;; Generating RTL for gimple basic block 2
+
+;; draw_wireframe_triangle (c_2(D), drawable_3(D), gcontext_4(D), 0, 0, 150, 100, 300, 90);
+
+(insn 8 7 9 (set (reg:SI 82)
+        (mem/c:SI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -16 [0xfffffffffffffff0])) [2 gcontext+0 S4 A32])) "draw_screen.c":7:5 -1
+     (nil))
+
+(insn 9 8 10 (set (reg:SI 83)
+        (mem/c:SI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -12 [0xfffffffffffffff4])) [2 drawable+0 S4 A32])) "draw_screen.c":7:5 -1
+     (nil))
+
+(insn 10 9 11 (set (reg:DI 84)
+        (mem/f/c:DI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [1 c+0 S8 A64])) "draw_screen.c":7:5 -1
+     (nil))
+
+(insn 11 10 12 (parallel [
+            (set (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int -8 [0xfffffffffffffff8])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw_screen.c":7:5 -1
+     (expr_list:REG_ARGS_SIZE (const_int 8 [0x8])
+        (nil)))
+
+(insn 12 11 13 (set (mem:SI (pre_modify:DI (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int -8 [0xfffffffffffffff8]))) [2  S4 A32])
+        (const_int 90 [0x5a])) "draw_screen.c":7:5 -1
+     (expr_list:REG_ARGS_SIZE (const_int 16 [0x10])
+        (nil)))
+
+(insn 13 12 14 (set (mem:SI (pre_modify:DI (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int -8 [0xfffffffffffffff8]))) [2  S4 A32])
+        (const_int 300 [0x12c])) "draw_screen.c":7:5 -1
+     (expr_list:REG_ARGS_SIZE (const_int 24 [0x18])
+        (nil)))
+
+(insn 14 13 15 (set (mem:SI (pre_modify:DI (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int -8 [0xfffffffffffffff8]))) [2  S4 A32])
+        (const_int 100 [0x64])) "draw_screen.c":7:5 -1
+     (expr_list:REG_ARGS_SIZE (const_int 32 [0x20])
+        (nil)))
+
+(insn 15 14 16 (set (reg:SI 37 r9)
+        (const_int 150 [0x96])) "draw_screen.c":7:5 -1
+     (nil))
+
+(insn 16 15 17 (set (reg:SI 36 r8)
+        (const_int 0 [0])) "draw_screen.c":7:5 -1
+     (nil))
+
+(insn 17 16 18 (set (reg:SI 2 cx)
+        (const_int 0 [0])) "draw_screen.c":7:5 -1
+     (nil))
+
+(insn 18 17 19 (set (reg:SI 1 dx)
+        (reg:SI 82)) "draw_screen.c":7:5 -1
+     (nil))
+
+(insn 19 18 20 (set (reg:SI 4 si)
+        (reg:SI 83)) "draw_screen.c":7:5 -1
+     (nil))
+
+(insn 20 19 21 (set (reg:DI 5 di)
+        (reg:DI 84)) "draw_screen.c":7:5 -1
+     (nil))
+
+(call_insn 21 20 22 (call (mem:QI (symbol_ref:DI ("draw_wireframe_triangle") [flags 0x41]  <function_decl 0x7fa9a7ce2300 draw_wireframe_triangle>) [0 draw_wireframe_triangle S1 A8])
+        (const_int 32 [0x20])) "draw_screen.c":7:5 -1
+     (nil)
+    (expr_list:DI (use (reg:DI 5 di))
+        (expr_list:SI (use (reg:SI 4 si))
+            (expr_list:SI (use (reg:SI 1 dx))
+                (expr_list:SI (use (reg:SI 2 cx))
+                    (expr_list:SI (use (reg:SI 36 r8))
+                        (expr_list:SI (use (reg:SI 37 r9))
+                            (nil))))))))
+
+(insn 22 21 0 (parallel [
+            (set (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int 32 [0x20])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw_screen.c":7:5 -1
+     (expr_list:REG_ARGS_SIZE (const_int 0 [0])
+        (nil)))
+
+
+try_optimize_cfg iteration 1
+
+Merging block 3 into block 2...
+Merged blocks 2 and 3.
+Merged 2 and 3 without moving.
+Merging block 4 into block 2...
+Merged blocks 2 and 4.
+Merged 2 and 4 without moving.
+
+
+try_optimize_cfg iteration 2
+
+fix_loop_structure: fixing up loops for function
+
+
+;;
+;; Full RTL generated for this function:
+;;
+(note 1 0 6 NOTE_INSN_DELETED)
+;; basic block 2, loop depth 0, maybe hot
+;;  prev block 0, next block 1, flags: (NEW, REACHABLE, RTL)
+;;  pred:       ENTRY (FALLTHRU)
+(note 6 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+(insn 2 6 3 2 (set (mem/f/c:DI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [1 c+0 S8 A64])
+        (reg:DI 5 di [ c ])) "draw_screen.c":6:89 -1
+     (nil))
+(insn 3 2 4 2 (set (mem/c:SI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -12 [0xfffffffffffffff4])) [2 drawable+0 S4 A32])
+        (reg:SI 4 si [ drawable ])) "draw_screen.c":6:89 -1
+     (nil))
+(insn 4 3 5 2 (set (mem/c:SI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -16 [0xfffffffffffffff0])) [2 gcontext+0 S4 A32])
+        (reg:SI 1 dx [ gcontext ])) "draw_screen.c":6:89 -1
+     (nil))
+(note 5 4 8 2 NOTE_INSN_FUNCTION_BEG)
+(insn 8 5 9 2 (set (reg:SI 82)
+        (mem/c:SI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -16 [0xfffffffffffffff0])) [2 gcontext+0 S4 A32])) "draw_screen.c":7:5 -1
+     (nil))
+(insn 9 8 10 2 (set (reg:SI 83)
+        (mem/c:SI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -12 [0xfffffffffffffff4])) [2 drawable+0 S4 A32])) "draw_screen.c":7:5 -1
+     (nil))
+(insn 10 9 11 2 (set (reg:DI 84)
+        (mem/f/c:DI (plus:DI (reg/f:DI 77 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [1 c+0 S8 A64])) "draw_screen.c":7:5 -1
+     (nil))
+(insn 11 10 12 2 (parallel [
+            (set (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int -8 [0xfffffffffffffff8])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw_screen.c":7:5 -1
+     (expr_list:REG_ARGS_SIZE (const_int 8 [0x8])
+        (nil)))
+(insn 12 11 13 2 (set (mem:SI (pre_modify:DI (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int -8 [0xfffffffffffffff8]))) [2  S4 A32])
+        (const_int 90 [0x5a])) "draw_screen.c":7:5 -1
+     (expr_list:REG_ARGS_SIZE (const_int 16 [0x10])
+        (nil)))
+(insn 13 12 14 2 (set (mem:SI (pre_modify:DI (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int -8 [0xfffffffffffffff8]))) [2  S4 A32])
+        (const_int 300 [0x12c])) "draw_screen.c":7:5 -1
+     (expr_list:REG_ARGS_SIZE (const_int 24 [0x18])
+        (nil)))
+(insn 14 13 15 2 (set (mem:SI (pre_modify:DI (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int -8 [0xfffffffffffffff8]))) [2  S4 A32])
+        (const_int 100 [0x64])) "draw_screen.c":7:5 -1
+     (expr_list:REG_ARGS_SIZE (const_int 32 [0x20])
+        (nil)))
+(insn 15 14 16 2 (set (reg:SI 37 r9)
+        (const_int 150 [0x96])) "draw_screen.c":7:5 -1
+     (nil))
+(insn 16 15 17 2 (set (reg:SI 36 r8)
+        (const_int 0 [0])) "draw_screen.c":7:5 -1
+     (nil))
+(insn 17 16 18 2 (set (reg:SI 2 cx)
+        (const_int 0 [0])) "draw_screen.c":7:5 -1
+     (nil))
+(insn 18 17 19 2 (set (reg:SI 1 dx)
+        (reg:SI 82)) "draw_screen.c":7:5 -1
+     (nil))
+(insn 19 18 20 2 (set (reg:SI 4 si)
+        (reg:SI 83)) "draw_screen.c":7:5 -1
+     (nil))
+(insn 20 19 21 2 (set (reg:DI 5 di)
+        (reg:DI 84)) "draw_screen.c":7:5 -1
+     (nil))
+(call_insn 21 20 22 2 (call (mem:QI (symbol_ref:DI ("draw_wireframe_triangle") [flags 0x41]  <function_decl 0x7fa9a7ce2300 draw_wireframe_triangle>) [0 draw_wireframe_triangle S1 A8])
+        (const_int 32 [0x20])) "draw_screen.c":7:5 -1
+     (nil)
+    (expr_list:DI (use (reg:DI 5 di))
+        (expr_list:SI (use (reg:SI 4 si))
+            (expr_list:SI (use (reg:SI 1 dx))
+                (expr_list:SI (use (reg:SI 2 cx))
+                    (expr_list:SI (use (reg:SI 36 r8))
+                        (expr_list:SI (use (reg:SI 37 r9))
+                            (nil))))))))
+(insn 22 21 0 2 (parallel [
+            (set (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int 32 [0x20])))
+            (clobber (reg:CC 17 flags))
+        ]) "draw_screen.c":7:5 -1
+     (expr_list:REG_ARGS_SIZE (const_int 0 [0])
+        (nil)))
+;;  succ:       EXIT [always]  (FALLTHRU)
+
