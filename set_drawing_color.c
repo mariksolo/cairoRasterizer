@@ -10,11 +10,7 @@ void set_drawing_color(xcb_connection_t *c, xcb_colormap_t colormap, xcb_gcontex
         return 0;
     free(color_info);
 
-    // gcontext = xcb_generate_id(c);
     mask = XCB_GC_FOREGROUND;
     value[0] = color_info->pixel;
     xcb_change_gc(c, gcontext, mask, value);
-
-    // return color_info;
-
 }
