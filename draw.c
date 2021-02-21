@@ -13,9 +13,10 @@ void draw_wireframe_triangle(xcb_connection_t *c, xcb_drawable_t drawable, xcb_g
 
 void draw_filled_triangle(xcb_connection_t *c, xcb_drawable_t drawable, xcb_gcontext_t gcontext, xcb_colormap_t colormap, xcb_point_t points[3], float color_shades[3])
 {
-    printf("hello world!");
+    // printf("hello world!");
     xcb_point_t tempPoint;
     xcb_point_t point[] = {0, 0};
+    float tempShade;
 
     float longSideXvals[1920];
     float shortSideXvals1[1920];
@@ -44,6 +45,10 @@ void draw_filled_triangle(xcb_connection_t *c, xcb_drawable_t drawable, xcb_gcon
         tempPoint = points[1];
         points[1] = points[0];
         points[0] = tempPoint;
+
+        tempShade = color_shades[1];
+        color_shades[1] = color_shades[0];
+        color_shades[0] = tempShade;
     }
 
     if (points[2].y < points[0].y)
@@ -51,6 +56,10 @@ void draw_filled_triangle(xcb_connection_t *c, xcb_drawable_t drawable, xcb_gcon
         tempPoint = points[2];
         points[2] = points[0];
         points[0] = tempPoint;
+
+        tempShade = color_shades[2];
+        color_shades[2] = color_shades[0];
+        color_shades[0] = tempShade;
     }
 
     if (points[2].y < points[1].y)
@@ -58,8 +67,12 @@ void draw_filled_triangle(xcb_connection_t *c, xcb_drawable_t drawable, xcb_gcon
         tempPoint = points[2];
         points[2] = points[1];
         points[1] = tempPoint;
+
+        tempShade = color_shades[2];
+        color_shades[2] = color_shades[1];
+        color_shades[1] = tempShade;
     }
-    printf("color shade 0: %f", 5.0);
+    // printf("color shade 0: %f", 5.0);
     interpolate(points[0].y, points[0].x, points[2].y, points[2].x, longSideXvals);
     interpolate(points[0].y, points[0].x, points[1].y, points[1].x, shortSideXvals1);
     interpolate(points[1].y, points[1].x, points[2].y, points[2].x, shortSideXvals2);
@@ -75,13 +88,14 @@ void draw_filled_triangle(xcb_connection_t *c, xcb_drawable_t drawable, xcb_gcon
     {
         shortSidesXvals[i] = shortSideXvals1[i];
         shortSidesShades[i] = shortSideShades1[i];
-        printf("shade: %d", shortSidesXvals[i]);
+        // printf("shade: %f\n", shortSidesShades[i]);
     }
 
     for (int j = 0; j < points[2].y - points[1].y + 1; j++)
     {
         shortSidesXvals[i + j] = shortSideXvals2[j];
         shortSidesShades[i + j] = shortSideShades2[j];
+        // printf("shade: %f\n", shortSidesShades[i + j]);
     }
 
     int middleIndex = (int)((points[2].y - points[0].y + 1) / 2);
@@ -101,22 +115,26 @@ void draw_filled_triangle(xcb_connection_t *c, xcb_drawable_t drawable, xcb_gcon
     }
 
     int index = 0;
-    for (int y = points[0].y; y <= points[2].y; y++)
+    int shadeIndex = 0;
+    for (float y = points[0].y; y <= points[2].y; y++)
     {
-        for (int x = leftXvals[index]; x <= rightXvals[index]; x++)
+        interpolate(leftXvals[index], leftShades[index], rightXvals[index], rightShades[index], calculatedShades);
+        shadeIndex = 0;
+        for (float x = leftXvals[index]; x <= rightXvals[index]; x++)
         {
-            interpolate(leftXvals[index], leftShades[index], rightXvals[index], rightShades[index], calculatedShades);
+            
             point[0].x = x;
             point[0].y = y;
-            shadedR = (float) 65535 * calculatedShades[index];
-            shadedG = (float) 65535 * calculatedShades[index];
-            shadedB = (float) 0 * calculatedShades[index];
+            shadedR = (float) 65535 * calculatedShades[shadeIndex];
+            shadedG = (float) 65535 * calculatedShades[shadeIndex];
+            shadedB = (float) 0 * calculatedShades[shadeIndex];
 
-            if (calculatedShades[index] != 0.0)
-                printf("shaded R: %f\n", calculatedShades[index]);
+            // if (calculatedShades[index] != 1.0)
+                // printf("calculatedShades[index]: %f\n", calculatedShades[shadeIndex]);
             
-            set_drawing_color(c, colormap, gcontext, 65535, 65535, shadedB);
+            set_drawing_color(c, colormap, gcontext, shadedR, shadedG, shadedB);
             xcb_poly_point(c, XCB_COORD_MODE_ORIGIN, drawable, gcontext, 1, point);
+            shadeIndex++;
         }
 
         index++;

@@ -1,5 +1,5 @@
 // assumes i1 < i2
-void interpolate(int i1, int d1, int i2, int d2, float values[]) {
+void interpolate(float i1, float d1, float i2, float d2, float values[]) {
 
     if (i1 == i2) {
         values[0] = (float) d1;
@@ -10,7 +10,7 @@ void interpolate(int i1, int d1, int i2, int d2, float values[]) {
     float d = (float) d1;
 
     int index = 0;
-    for (int i = i1; i <= i2; i++) {
+    for (double i = i1; i <= i2; i++) {
         values[index] = (float) d;
         d += a;
         index++;
