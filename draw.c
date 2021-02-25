@@ -1,21 +1,23 @@
 #include <xcb/xcb.h>
+#include "point.h"
 #include <unistd.h>
 #include <stdio.h>
 #include "interpolate.h"
-#include "set_drawing_color.h"
+#include <cairo.h>
+#include <cairo-xcb.h>
 
-void draw_wireframe_triangle(xcb_connection_t *c, xcb_drawable_t drawable, xcb_gcontext_t gcontext, xcb_point_t points[3])
+
+void draw_wireframe_triangle(cairo_t *cr, struct point points[3])
 {
-    draw_line(c, drawable, gcontext, points[0].x, points[0].y, points[1].x, points[1].y);
-    draw_line(c, drawable, gcontext, points[1].x, points[1].y, points[2].x, points[2].y);
-    draw_line(c, drawable, gcontext, points[2].x, points[2].y, points[0].x, points[0].y);
+    draw_line(cr, points[0].x, points[0].y, points[1].x, points[1].y);
+    draw_line(cr, points[1].x, points[1].y, points[2].x, points[2].y);
+    draw_line(cr, points[2].x, points[2].y, points[0].x, points[0].y);
 }
 
-void draw_filled_triangle(xcb_connection_t *c, xcb_drawable_t drawable, xcb_gcontext_t gcontext, xcb_colormap_t colormap, xcb_point_t points[3], float color_shades[3])
+void draw_filled_triangle(cairo_t *cr, struct point points[3], float color_shades[3])
 {
     // printf("hello world!");
-    xcb_point_t tempPoint;
-    xcb_point_t point[] = {0, 0};
+    struct point tempPoint;
     float tempShade;
 
     float longSideXvals[1920];
@@ -123,27 +125,25 @@ void draw_filled_triangle(xcb_connection_t *c, xcb_drawable_t drawable, xcb_gcon
         for (float x = leftXvals[index]; x <= rightXvals[index]; x++)
         {
             
-            point[0].x = x;
-            point[0].y = y;
-            shadedR = (float) 65535 * calculatedShades[shadeIndex];
-            shadedG = (float) 65535 * calculatedShades[shadeIndex];
+            
+            shadedR = (float) 1.0 * calculatedShades[shadeIndex];
+            shadedG = (float) 1.0 * calculatedShades[shadeIndex];
             shadedB = (float) 0 * calculatedShades[shadeIndex];
 
             // if (calculatedShades[index] != 1.0)
                 // printf("calculatedShades[index]: %f\n", calculatedShades[shadeIndex]);
-            
-            set_drawing_color(c, colormap, gcontext, shadedR, shadedG, shadedB);
-            xcb_poly_point(c, XCB_COORD_MODE_ORIGIN, drawable, gcontext, 1, point);
+            cairo_set_source_rgb(cr, shadedR, shadedG, shadedB);
+            cairo_rectangle(cr, x, y, 1.0, 1.0);
+            cairo_fill(cr);
             shadeIndex++;
         }
 
         index++;
     }
 
-    xcb_flush(c);
 }
 
-void draw_line(xcb_connection_t *c, xcb_drawable_t drawable, xcb_gcontext_t gcontext, int x1, int y1, int x2, int y2)
+void draw_line(cairo_t *cr, int x1, int y1, int x2, int y2)
 {
 
     if (abs(x2 - x1) > abs(y2 - y1))
@@ -162,25 +162,15 @@ void draw_line(xcb_connection_t *c, xcb_drawable_t drawable, xcb_gcontext_t gcon
         float yVals[1920];
         interpolate(x1, y1, x2, y2, yVals);
 
-        xcb_point_t point[] = {0, 0};
-
-        // TODO: make it work like this, so it is more efficient
-
-        // int index = 0;
-        // for (int x = x1; x <= x2; x++) {
-        //     point[index].x = x;
-        //     point[index].y = yVals[index];
-        //     index++;
-        // }
-
-        // xcb_poly_point(c, XCB_COORD_MODE_ORIGIN, drawable, gcontext, x2 - x1 + 1, point);
+        
 
         int index = 0;
         for (int x = x1; x <= x2; x++)
         {
-            point[0].x = x;
-            point[0].y = yVals[index];
-            xcb_poly_point(c, XCB_COORD_MODE_ORIGIN, drawable, gcontext, 1, point);
+            
+            cairo_rectangle(cr, x, yVals[index], 1.0, 1.0);
+            cairo_fill(cr);
+
             index++;
         }
 
@@ -201,19 +191,19 @@ void draw_line(xcb_connection_t *c, xcb_drawable_t drawable, xcb_gcontext_t gcon
         float xVals[1920];
         interpolate(y1, x1, y2, x2, xVals);
 
-        xcb_point_t point[] = {0, 0};
+        
 
         int index = 0;
         for (int y = y1; y <= y2; y++)
         {
-            point[0].x = xVals[index];
-            point[0].y = y;
-            xcb_poly_point(c, XCB_COORD_MODE_ORIGIN, drawable, gcontext, 1, point);
+            
+            cairo_rectangle(cr, xVals[index], y, 1.0, 1.0);
+            cairo_fill(cr);
+
             index++;
         }
 
         memset(&xVals[0], 0, sizeof(xVals));
     }
 
-    xcb_flush(c);
 }
