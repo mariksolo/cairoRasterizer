@@ -7,6 +7,8 @@
 #include "draw_screen.h"
 #include <stdlib.h>
 
+
+// Copy pasted find_visual from tutorial, have no idea how it works
 static xcb_visualtype_t *find_visual(xcb_connection_t *c, xcb_visualid_t visual)
 {
     xcb_screen_iterator_t screen_iter = xcb_setup_roots_iterator(xcb_get_setup(c));

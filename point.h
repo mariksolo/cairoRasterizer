@@ -7,4 +7,10 @@ struct point
    float y;
 };
 
+struct point_3d {
+    float x;
+    float y;
+    float z;
+};
+
 #endif
