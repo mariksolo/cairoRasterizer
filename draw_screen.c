@@ -4,6 +4,7 @@
 #include "point.h"
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "draw.h"
 #include "project_vertex.h"
 #include "triangle_list.h"
@@ -12,4 +13,5 @@
 void draw_screen(cairo_t *cr) {
     struct triangle_list triangles;
     triangles = process_verteces();
+    
 }

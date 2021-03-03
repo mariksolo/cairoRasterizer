@@ -3,6 +3,7 @@
         "stdio.h": "c",
         "unistd.h": "c",
         "xcb.h": "c",
-        "draw.h": "c"
+        "draw.h": "c",
+        "triangle_list.h": "c"
     }
 }
