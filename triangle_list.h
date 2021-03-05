@@ -4,9 +4,10 @@
 #include "point.h"
 
 struct triangle_list {
+    int num_triangles;
     struct point_3d verteces[100];
     float shades[100];
-    float colors[3][34];
+    struct color colors[34];
 };
 
 #endif

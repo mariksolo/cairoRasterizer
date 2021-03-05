@@ -6,37 +6,48 @@
 #include <cairo.h>
 #include <cairo-xcb.h>
 
-
 void draw_wireframe_triangle(cairo_t *cr, struct point points[3])
 {
+
+    //TODO figure out why this is broken
+
     draw_line(cr, points[0].x, points[0].y, points[1].x, points[1].y);
     draw_line(cr, points[1].x, points[1].y, points[2].x, points[2].y);
     draw_line(cr, points[2].x, points[2].y, points[0].x, points[0].y);
 }
 
-void draw_filled_triangle(cairo_t *cr, struct point points[3], float color_shades[3])
+void draw_filled_triangle(cairo_t *cr, struct point_3d points[3], float color_shades[3], float color[3], float depth_buffer[1920][1076])
 {
     // printf("hello world!");
-    struct point tempPoint;
+    struct point_3d tempPoint;
     float tempShade;
 
-    float longSideXvals[1920];
-    float shortSideXvals1[1920];
-    float shortSideXvals2[1920];
-    float shortSidesXvals[1920];
+    float longSideXvals[1000];
+    float shortSideXvals1[1000];
+    float shortSideXvals2[1000];
+    float shortSidesXvals[1000];
 
-    float leftXvals[1920];
-    float rightXvals[1920];
+    float leftXvals[1000];
+    float rightXvals[1000];
 
-    float longSideShades[1920];
-    float shortSideShades1[1920];
-    float shortSideShades2[1920];
-    float shortSidesShades[1920];
+    float longSideShades[1000];
+    float shortSideShades1[1000];
+    float shortSideShades2[1000];
+    float shortSidesShades[1000];
 
-    float leftShades[1920];
-    float rightShades[1920];
+    float leftShades[1000];
+    float rightShades[1000];
 
-    float calculatedShades[1920];
+    float leftZvals[1000];
+    float rightZvals[1000];
+
+    float longSideZvals[1000];
+    float shortSideZvals1[1000];
+    float shortSideZvals2[1000];
+    float shortSidesZvals[1000];
+
+    float calculatedShades[1000];
+    float calculatedZvals[1000];
 
     float shadedR;
     float shadedG;
@@ -83,6 +94,13 @@ void draw_filled_triangle(cairo_t *cr, struct point points[3], float color_shade
     interpolate(points[0].y, color_shades[0], points[1].y, color_shades[1], shortSideShades1);
     interpolate(points[1].y, color_shades[1], points[2].y, color_shades[2], shortSideShades2);
 
+    // Z vals are fundamentally different from x vals. They do not represent the z of the pixel - pixels are
+    // already 2d here. They are the z value of the point they represent, necessary to fill the depth_buffer
+    // for hidden surface removal.
+    interpolate(points[0].y, points[0].z, points[2].y, points[2].z, longSideZvals);
+    interpolate(points[0].y, points[0].z, points[1].y, points[1].z, shortSideZvals1);
+    interpolate(points[1].y, points[1].z, points[2].y, points[2].z, shortSideZvals2);
+
     // longSideXvals[sizeof(longSideXvals) / sizeof(longSideXvals[0]) - 1] = '\0';
 
     int i;
@@ -90,6 +108,7 @@ void draw_filled_triangle(cairo_t *cr, struct point points[3], float color_shade
     {
         shortSidesXvals[i] = shortSideXvals1[i];
         shortSidesShades[i] = shortSideShades1[i];
+        shortSidesZvals[i] = shortSideZvals1[i];
         // printf("shade: %f\n", shortSidesShades[i]);
     }
 
@@ -97,9 +116,11 @@ void draw_filled_triangle(cairo_t *cr, struct point points[3], float color_shade
     {
         shortSidesXvals[i + j] = shortSideXvals2[j];
         shortSidesShades[i + j] = shortSideShades2[j];
+        shortSidesZvals[i + j] = shortSideZvals2[j];
         // printf("shade: %f\n", shortSidesShades[i + j]);
     }
 
+    // TODO get rid of memcpy's and make more efficient - this is probably what is killing performance
     int middleIndex = (int)((points[2].y - points[0].y + 1) / 2);
     if (longSideXvals[middleIndex] < shortSidesXvals[middleIndex])
     {
@@ -107,6 +128,8 @@ void draw_filled_triangle(cairo_t *cr, struct point points[3], float color_shade
         memcpy(rightXvals, shortSidesXvals, sizeof(shortSidesXvals));
         memcpy(leftShades, longSideShades, sizeof(longSideShades));
         memcpy(rightShades, shortSidesShades, sizeof(shortSidesShades));
+        memcpy(leftZvals, longSideZvals, sizeof(longSideZvals));
+        memcpy(rightZvals, shortSidesZvals, sizeof(shortSidesZvals));
     }
     else
     {
@@ -114,33 +137,44 @@ void draw_filled_triangle(cairo_t *cr, struct point points[3], float color_shade
         memcpy(rightXvals, longSideXvals, sizeof(longSideXvals));
         memcpy(leftShades, shortSidesShades, sizeof(shortSidesShades));
         memcpy(rightShades, longSideShades, sizeof(longSideShades));
+        memcpy(leftZvals, shortSidesZvals, sizeof(shortSidesZvals));
+        memcpy(rightZvals, longSideZvals, sizeof(longSideZvals));
     }
 
     int index = 0;
+    // TODO change name of shadeIndex to include use for Zvals too
     int shadeIndex = 0;
+    float previous_depth;
     for (float y = points[0].y; y <= points[2].y; y++)
     {
         interpolate(leftXvals[index], leftShades[index], rightXvals[index], rightShades[index], calculatedShades);
+        interpolate(leftXvals[index], leftZvals[index], rightXvals[index], rightZvals[index], calculatedZvals);
         shadeIndex = 0;
         for (float x = leftXvals[index]; x <= rightXvals[index]; x++)
         {
-            
-            
-            shadedR = (float) 1.0 * calculatedShades[shadeIndex];
-            shadedG = (float) 1.0 * calculatedShades[shadeIndex];
-            shadedB = (float) 0 * calculatedShades[shadeIndex];
+                // fprintf(stdout, "Hello?");
 
-            // if (calculatedShades[index] != 1.0)
+            previous_depth = depth_buffer[(int)x][(int)y];
+            if (!previous_depth || (previous_depth != 0.0 && calculatedZvals[shadeIndex] < previous_depth))
+            {
+                shadedR = (float)color[0] * calculatedShades[shadeIndex];
+                shadedG = (float)color[1] * calculatedShades[shadeIndex];
+                shadedB = (float)color[2] * calculatedShades[shadeIndex];
+
+                // if (calculatedShades[index] != 1.0)
                 // printf("calculatedShades[index]: %f\n", calculatedShades[shadeIndex]);
-            cairo_set_source_rgb(cr, shadedR, shadedG, shadedB);
-            cairo_rectangle(cr, x, y, 1.0, 1.0);
-            cairo_fill(cr);
+                cairo_set_source_rgb(cr, shadedR, shadedG, shadedB);
+                cairo_rectangle(cr, x, y, 1.0, 1.0);
+                cairo_fill(cr);
+
+                depth_buffer[(int)x][(int)y] = calculatedZvals[shadeIndex];
+            }
+
             shadeIndex++;
         }
 
         index++;
     }
-
 }
 
 void draw_line(cairo_t *cr, int x1, int y1, int x2, int y2)
@@ -162,12 +196,10 @@ void draw_line(cairo_t *cr, int x1, int y1, int x2, int y2)
         float yVals[1920];
         interpolate(x1, y1, x2, y2, yVals);
 
-        
-
         int index = 0;
         for (int x = x1; x <= x2; x++)
         {
-            
+
             cairo_rectangle(cr, x, yVals[index], 1.0, 1.0);
             cairo_fill(cr);
 
@@ -191,12 +223,10 @@ void draw_line(cairo_t *cr, int x1, int y1, int x2, int y2)
         float xVals[1920];
         interpolate(y1, x1, y2, x2, xVals);
 
-        
-
         int index = 0;
         for (int y = y1; y <= y2; y++)
         {
-            
+
             cairo_rectangle(cr, xVals[index], y, 1.0, 1.0);
             cairo_fill(cr);
 
@@ -205,5 +235,4 @@ void draw_line(cairo_t *cr, int x1, int y1, int x2, int y2)
 
         memset(&xVals[0], 0, sizeof(xVals));
     }
-
 }

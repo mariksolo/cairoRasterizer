@@ -4,6 +4,7 @@
         "unistd.h": "c",
         "xcb.h": "c",
         "draw.h": "c",
-        "triangle_list.h": "c"
+        "triangle_list.h": "c",
+        "interpolate.h": "c"
     }
 }

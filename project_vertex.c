@@ -1,7 +1,7 @@
 #include "point.h"
 
-struct point project_vertex(struct point_3d p, float view_port_distance, float view_port_width, float view_port_height) {
-    struct point projected_p;
+struct point_3d project_vertex(struct point_3d p, float view_port_distance, float view_port_width, float view_port_height) {
+    struct point_3d projected_p;
 
     float view_port_x = p.x * view_port_distance / p.z;
     float view_port_y = p.y * view_port_distance / p.z;
@@ -11,6 +11,7 @@ struct point project_vertex(struct point_3d p, float view_port_distance, float v
 
     projected_p.x = canvas_x;
     projected_p.y = canvas_y;
+    projected_p.z = p.z;
 
     return projected_p;
 }
