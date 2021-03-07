@@ -3,8 +3,8 @@
 #include <unistd.h>
 #include <stdio.h>
 #include "interpolate.h"
-#include <cairo.h>
-#include <cairo-xcb.h>
+#include <cairo/cairo.h>
+#include <cairo/cairo-xcb.h>
 
 void draw_wireframe_triangle(cairo_t *cr, struct point points[3])
 {
@@ -155,17 +155,20 @@ void draw_filled_triangle(cairo_t *cr, struct point_3d points[3], float color_sh
                 // fprintf(stdout, "Hello?");
 
             previous_depth = depth_buffer[(int)x][(int)y];
-            if (!previous_depth || (previous_depth != 0.0 && calculatedZvals[shadeIndex] < previous_depth))
+            if (!previous_depth || (calculatedZvals[shadeIndex] > previous_depth))
             {
                 shadedR = (float)color[0] * calculatedShades[shadeIndex];
                 shadedG = (float)color[1] * calculatedShades[shadeIndex];
                 shadedB = (float)color[2] * calculatedShades[shadeIndex];
+                // shadedR = (float)color[0];
+                // shadedG = (float)color[1];
+                // shadedB = (float)color[2];
 
                 // if (calculatedShades[index] != 1.0)
                 // printf("calculatedShades[index]: %f\n", calculatedShades[shadeIndex]);
                 cairo_set_source_rgb(cr, shadedR, shadedG, shadedB);
                 cairo_rectangle(cr, x, y, 1.0, 1.0);
-                cairo_fill(cr);
+                
 
                 depth_buffer[(int)x][(int)y] = calculatedZvals[shadeIndex];
             }
@@ -175,6 +178,7 @@ void draw_filled_triangle(cairo_t *cr, struct point_3d points[3], float color_sh
 
         index++;
     }
+    cairo_fill(cr);
 }
 
 void draw_line(cairo_t *cr, int x1, int y1, int x2, int y2)

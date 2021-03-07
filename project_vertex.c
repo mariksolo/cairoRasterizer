@@ -11,7 +11,7 @@ struct point_3d project_vertex(struct point_3d p, float view_port_distance, floa
 
     projected_p.x = canvas_x;
     projected_p.y = canvas_y;
-    projected_p.z = p.z;
+    projected_p.z = 1 / p.z; // supposed to do this
 
     return projected_p;
 }

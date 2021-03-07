@@ -23,7 +23,7 @@ struct triangle_list process_verteces()
 
     int c; // note: int, not char, required to handle EOF
     int i = 0;
-    int prev_val = "a"; // Anything except /n
+    int prev_val = 'a'; // Anything except /n
     // Get number of triangles in file
     while ((c = fgetc(fp)) != EOF)
     { // standard C I/O file reading loop
@@ -40,7 +40,7 @@ struct triangle_list process_verteces()
     num_triangles = atoi(current_value);
 
     i = 0;
-    prev_val = "a";
+    prev_val = 'a';
     int temp_vertex_count = 0;
 
     // TODO figure out why the hell this works with linebreaks even though I never added that feature
@@ -64,7 +64,7 @@ struct triangle_list process_verteces()
 
             current_float = atof(current_value);
             i = 0;
-            // prev_val = "a";
+            // prev_val = 'a';
 
             switch (temp_vertex_count)
             {
@@ -99,10 +99,10 @@ struct triangle_list process_verteces()
     }
     memset(&current_value[0], 0, sizeof(current_value));
 
-    // for (i = 0; i < num_triangles * 3; i++) {
-    //     fprintf(stdout, "%f, %f, %f\n", verteces[i].x, verteces[i].y, verteces[i].z);
-    // }
-    prev_val = "a";
+    for (i = 0; i < num_triangles; i++) {
+        fprintf(stdout, "%f, %f, %f\n", verteces[i].x, verteces[i].y, verteces[i].z);
+    }
+    prev_val = 'a';
     i = 0;
     while ((c = fgetc(fp)) != EOF)
     { // standard C I/O file reading loop
@@ -134,7 +134,7 @@ struct triangle_list process_verteces()
     // }
     memset(&current_value[0], 0, sizeof(current_value));
 
-    prev_val = "a";
+    prev_val = 'a';
     i = 0;
     int temp_color_count = 0;
     struct color current_color;
@@ -158,7 +158,7 @@ struct triangle_list process_verteces()
 
             current_float = atof(current_value);
             i = 0;
-            // prev_val = "a";
+            // prev_val = 'a';
 
             switch (temp_color_count)
             {
